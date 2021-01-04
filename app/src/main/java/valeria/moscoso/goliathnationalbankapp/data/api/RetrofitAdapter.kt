@@ -1,4 +1,4 @@
-package valeria.moscoso.goliathnationalbankapp.data
+package valeria.moscoso.goliathnationalbankapp.data.api
 
 import me.sianaki.flowretrofitadapter.FlowCallAdapterFactory
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package valeria.moscoso.goliathnationalbankapp.data
+package valeria.moscoso.goliathnationalbankapp.data.api
 
 object ApiConstants {
     const val BASE_URL = "http://quiet-stone-2094.herokuapp.com"

@@ -1,4 +1,4 @@
-package valeria.moscoso.goliathnationalbankapp.data
+package valeria.moscoso.goliathnationalbankapp.data.api
 
 
 import okhttp3.Interceptor
