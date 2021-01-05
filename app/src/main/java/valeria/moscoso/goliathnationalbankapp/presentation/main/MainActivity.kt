@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         progressBar_layout.visibility = View.VISIBLE
         viewModel.transactionsSkuList.observe(this) {
             progressBar_layout.visibility = View.INVISIBLE
-            itemsAdapter = ItemsAdapter(it)
+            itemsAdapter = ItemsAdapter(it, this)
             main_recyclerView.adapter = itemsAdapter
             itemsAdapter.notifyDataSetChanged()
         }
