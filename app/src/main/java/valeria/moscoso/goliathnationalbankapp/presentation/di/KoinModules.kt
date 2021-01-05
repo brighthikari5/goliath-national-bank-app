@@ -7,6 +7,7 @@ import valeria.moscoso.goliathnationalbankapp.data.datasource.BankCloudDataSourc
 import valeria.moscoso.goliathnationalbankapp.data.datasource.BankLocalDataSource
 import valeria.moscoso.goliathnationalbankapp.data.repository.BankRepository
 import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetInitialDataUseCase
+import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetTransactionsGroupByNameUseCase
 import valeria.moscoso.goliathnationalbankapp.presentation.main.MainViewModel
 
 
@@ -25,10 +26,17 @@ val repositoryModule = module {
 
 val useCaseModule = module {
     factory { GetInitialDataUseCase(bankRepository = get()) }
+    factory { GetTransactionsGroupByNameUseCase(bankRepository = get()) }
 }
 
-val viewModelModule = module{
-    viewModel { MainViewModel(getInitialDataUseCase = get()) }
+val viewModelModule = module {
+    viewModel {
+        MainViewModel(
+            getInitialDataUseCase = get(),
+            getTransactionsGroupByNameUseCase = get()
+        )
+    }
 }
 
-val generalModules = listOf(serviceModule, dataModule, repositoryModule, useCaseModule, viewModelModule)
+val generalModules =
+    listOf(serviceModule, dataModule, repositoryModule, useCaseModule, viewModelModule)

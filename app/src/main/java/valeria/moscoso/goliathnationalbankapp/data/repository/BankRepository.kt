@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import valeria.moscoso.goliathnationalbankapp.data.datasource.BankCloudDataSource
 import valeria.moscoso.goliathnationalbankapp.data.datasource.BankLocalDataSource
+import valeria.moscoso.goliathnationalbankapp.domain.model.Transaction
 
 
 class BankRepository(
@@ -22,4 +23,6 @@ class BankRepository(
             .flatMapConcat { transactionCloudList ->
                 localDataSource.storeTransaction(transactionCloudList)
             }
+
+    fun getTransactions(): Flow<List<Transaction>> = localDataSource.getTransactions()
 }
