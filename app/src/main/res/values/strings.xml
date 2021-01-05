@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">GoliathNationalBankApp</string>
+    <string name="app_name">Goliath National Bank</string>
+    <string name="main_title">Hello! welcome to Goliath National Bank</string>
+    <string name="main_subtitle">Please click on any item to see its transactions</string>
 </resources>
