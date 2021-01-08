@@ -14,8 +14,8 @@ class CurrencyRateDtoMapperTest {
 
         val actualCurrencyRate = CurrencyRateDtoMapper.fromListDtoToDomainList(currencyRateDtoList)[0]
 
-        assert(currencyRateExpected.from == actualCurrencyRate.from)
-        assert(currencyRateExpected.to == actualCurrencyRate.to)
+        assert(currencyRateExpected.currencyFrom == actualCurrencyRate.currencyFrom)
+        assert(currencyRateExpected.currencyTo == actualCurrencyRate.currencyTo)
         assert(currencyRateExpected.rate == actualCurrencyRate.rate)
     }
 }

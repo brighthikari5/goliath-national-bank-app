@@ -4,12 +4,12 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetInitialDataUseCase
-import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetTransactionsGroupByNameUseCase
+import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetTransactionsDistinctUseCase
 
 
 class MainViewModel(
     private val getInitialDataUseCase: GetInitialDataUseCase,
-    private val getTransactionsGroupByNameUseCase: GetTransactionsGroupByNameUseCase
+    private val getTransactionsDistinctUseCase: GetTransactionsDistinctUseCase
 ) : ViewModel() {
 
     var transactionsSkuList = MutableLiveData<List<String>>()
@@ -22,7 +22,7 @@ class MainViewModel(
         viewModelScope.launch {
             getInitialDataUseCase.execute()
                 .flatMapConcat {
-                    getTransactionsGroupByNameUseCase.execute()
+                    getTransactionsDistinctUseCase.execute()
                 }
                 .flowOn(Dispatchers.IO)
                 .catch {
@@ -33,6 +33,5 @@ class MainViewModel(
                 }
         }
     }
-
 
 }

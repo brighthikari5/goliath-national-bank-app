@@ -20,7 +20,9 @@ class ItemsAdapter(private val itemsList: List<String>, private val context: Con
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ItemsViewHolder).bindData(itemsList[position])
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, ItemDetailActivity::class.java)
+            val intent = Intent(context, ItemDetailActivity::class.java).apply {
+                putExtra(ItemDetailActivity.EXTRA_SKU, itemsList[position])
+            }
             context.startActivity(intent)
         }
     }

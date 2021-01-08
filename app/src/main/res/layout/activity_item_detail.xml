@@ -7,6 +7,7 @@
     tools:context=".presentation.itemdetail.ItemDetailActivity">
 
     <TextView
+        android:id="@+id/testt"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
