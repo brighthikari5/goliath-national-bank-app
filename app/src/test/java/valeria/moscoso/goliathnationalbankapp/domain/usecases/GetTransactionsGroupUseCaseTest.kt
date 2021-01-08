@@ -1,23 +1,21 @@
 package valeria.moscoso.goliathnationalbankapp.domain.usecases
 
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
-
 import org.junit.Test
 import valeria.moscoso.goliathnationalbankapp.data.repository.BankRepository
 import valeria.moscoso.goliathnationalbankapp.domain.model.Transaction
 
-class GetTransactionsGroupByNameUseCaseTest {
+class GetTransactionsGroupUseCaseTest {
 
     private val repository: BankRepository = mock()
-    private val useCase = GetTransactionsGroupByNameUseCase(repository)
+    private val useCase = GetTransactionsGroupUseCase(repository)
 
     @Test
-    fun `should trigger expected repository calls when executed`() {
+    fun `should return a filtered by sku list when executed`() {
         runBlocking {
             val transactionsList = listOf<Transaction>(
                 Transaction(SKU_01, 1.25, "EUR"),
@@ -29,12 +27,12 @@ class GetTransactionsGroupByNameUseCaseTest {
             )
             whenever(repository.getTransactions()).thenReturn(flowOf(transactionsList))
 
-            val transactionListGrouped = useCase.execute().single()
+            val filteredList = useCase.execute(SKU_01).single()
 
-            verify(repository).getTransactions()
-            assert(transactionListGrouped.filter { it == SKU_01 }.count() == 1)
-            assert(transactionListGrouped.filter { it == SKU_02 }.count() == 1)
-            assert(transactionListGrouped.filter { it == SKU_03 }.count() == 1)
+            assert(filteredList.size == 2)
+            assert(filteredList.find { it.sku == SKU_02 } == null)
+            assert(filteredList.find { it.sku == SKU_03 } == null)
+            assert(filteredList.find { it.sku == SKU_01 } != null)
         }
     }
 
