@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import valeria.moscoso.goliathnationalbankapp.domain.model.Transaction
 import valeria.moscoso.goliathnationalbankapp.domain.model.TransactionGroupBySku
 import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetTotalAmountFromTransactionsUseCase
 import valeria.moscoso.goliathnationalbankapp.domain.usecases.GetTransactionsGroupUseCase
@@ -17,7 +16,6 @@ class ItemDetailViewModel(
 ) : ViewModel() {
 
     var transactionGroupBySku = MutableLiveData<TransactionGroupBySku>()
-
     var onError = MutableLiveData<String>()
 
     fun getTransactions(sku: String) {

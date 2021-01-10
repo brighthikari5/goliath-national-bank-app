@@ -6,9 +6,9 @@ import valeria.moscoso.goliathnationalbankapp.domain.model.dto.CurrencyRateDto
 import valeria.moscoso.goliathnationalbankapp.domain.model.dto.TransactionDto
 
 interface BankApi {
-    @GET("/rates.json")
+    @GET("/rates")
     fun getRates(): Flow<List<CurrencyRateDto>>
 
-    @GET ("/transactions.json")
+    @GET ("/transactions")
     fun getTransactions(): Flow<List<TransactionDto>>
 }

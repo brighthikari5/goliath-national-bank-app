@@ -8,52 +8,60 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/amount_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:background="@color/background_translucent">
 
         <TextView
             android:id="@+id/item_amount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito"
-            android:text="Amount"
+            android:gravity="right"
+            android:text="@string/amount_str"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_amount_value"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/item_amount_value"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito"
+            android:gravity="center"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_currency"
             app:layout_constraintStart_toEndOf="@+id/item_amount"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="10.25" />
+            tools:text="10,25" />
 
 
         <TextView
             android:id="@+id/item_currency"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito"
-            android:text="Currency"
+            android:gravity="right"
+            android:text="@string/currency_str"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_amount_currency_value"
             app:layout_constraintStart_toEndOf="@+id/item_amount_value"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/item_amount_currency_value"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:fontFamily="@font/nunito"
+            android:gravity="center"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -2,14 +2,11 @@ package valeria.moscoso.goliathnationalbankapp.presentation.itemdetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_item_detail.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import valeria.moscoso.goliathnationalbankapp.R
-import valeria.moscoso.goliathnationalbankapp.domain.model.TransactionGroupBySku
 
 class ItemDetailActivity : AppCompatActivity() {
 
@@ -17,31 +14,30 @@ class ItemDetailActivity : AppCompatActivity() {
     private lateinit var itemsDetailAdapter: ItemDetailAdapter
 
     companion object {
-        val EXTRA_SKU = "EXTRA_SKU"
+        const val EXTRA_SKU = "EXTRA_SKU"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
-
         val sku = intent.getStringExtra(EXTRA_SKU) ?: ""
         item_detail_sku.text = sku
         itemDetailViewModel.getTransactions(sku)
         setObservers()
         item_detail_recyclerView.layoutManager = LinearLayoutManager(this)
+        title = getString(R.string.item_detail_toolbar)
     }
 
     private fun setObservers() {
         itemDetailViewModel.transactionGroupBySku.observe(this) {
-            item_detail_total_amount.text = it.totalAmountEur.toString()
+            val amountFormatted = getString(R.string.euro_value, formatAmountToView(it.totalAmountEur))
+            item_detail_total_amount.text = amountFormatted
             itemsDetailAdapter = ItemDetailAdapter(it.transactionList)
             item_detail_recyclerView.adapter = itemsDetailAdapter
             itemsDetailAdapter.notifyDataSetChanged()
         }
-
         itemDetailViewModel.onError.observe(this) {
-            Log.e("errorr", it.toString())
-            Toast.makeText(this, "And error ocurred, please try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
         }
     }
 }

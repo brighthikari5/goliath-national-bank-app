@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
 
         viewModel.onError.observe(this) {
             progressBar_layout.visibility = View.INVISIBLE
-            Toast.makeText(this, "And error ocurred, please try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_SHORT).show()
         }
     }
 }

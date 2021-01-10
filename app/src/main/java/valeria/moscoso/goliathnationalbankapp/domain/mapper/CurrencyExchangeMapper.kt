@@ -1,9 +1,10 @@
 package valeria.moscoso.goliathnationalbankapp.domain.mapper
 
 
+import valeria.moscoso.goliathnationalbankapp.domain.exception.BankException
+import valeria.moscoso.goliathnationalbankapp.domain.exception.ErrorType
 import valeria.moscoso.goliathnationalbankapp.domain.model.CurrencyRate
 import valeria.moscoso.goliathnationalbankapp.domain.model.Transaction
-import java.lang.RuntimeException
 
 
 class CurrencyExchangeMapper {
@@ -69,7 +70,7 @@ class CurrencyExchangeMapper {
             }
 
         if (resultList.isEmpty()) {
-            throw RuntimeException("NO EUR CONVERSION FOUND")
+            throw BankException(ErrorType.CONVERSION_NOT_FOUND)
         }
 
         return resultList

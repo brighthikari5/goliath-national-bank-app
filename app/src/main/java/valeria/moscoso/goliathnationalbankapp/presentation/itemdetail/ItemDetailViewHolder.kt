@@ -9,7 +9,7 @@ import valeria.moscoso.goliathnationalbankapp.domain.model.Transaction
 class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindData(transaction: Transaction) {
-        itemView.item_amount_value.text = transaction.amount.toString()
+        itemView.item_amount_value.text = formatAmountToView(transaction.amount)
         itemView.item_amount_currency_value.text = transaction.currency
     }
 }

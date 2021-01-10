@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Goliath National Bank</string>
-    <string name="main_title">Hello! welcome to Goliath National Bank</string>
+    <string name="main_title">Hello! Welcome to Goliath National Bank</string>
     <string name="main_subtitle">Please click on any item to see its transactions</string>
+    <string name="error_message">An error has occurred, please try again</string>
+    <string name="progress_bar_text">Data is downloading, please wait</string>
+    <string name="amount_str">Amount:</string>
+    <string name="currency_str">Currency:</string>
+    <string name="item_detail_subtitle">Total amount in Euros of all the transactions:</string>
+    <string name="item_detail_title">List of the transactions of selected item:</string>
+    <string name="item_detail_selection_str">Item selected:</string>
+    <string name="euro_value">"%1$S €"</string>
+    <string name="item_detail_toolbar">Transactions List</string>
 </resources>

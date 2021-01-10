@@ -8,7 +8,9 @@ import valeria.moscoso.goliathnationalbankapp.R
 import valeria.moscoso.goliathnationalbankapp.presentation.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
-    private val SPLASH_TIME_OUT: Long = 2000
+    private companion object {
+        private const val SPLASH_TIME_OUT: Long = 1000
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
